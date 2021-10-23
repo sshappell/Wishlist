@@ -27,7 +27,7 @@
                 var items = "";
 
                 $wishlist.each(function () {
-                    items += "<li><a href='" + $(this).attr("url") + "'>" + $(this).attr("text").replace(/\.webloc$/,"") + "</a></li>";
+                    items += "<li><a href='" + $(this).attr("URL") + "'>" + $(this).attr("text").replace(/\.webloc$/,"") + "</a></li>";
                 });
 
                 $("#wishlist").html(items);
