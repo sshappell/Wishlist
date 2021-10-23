@@ -46,13 +46,19 @@
 </head>
 
 <body>
-    <div id="wishlist"></div>
+    <ul id="wishlist"></ul>
 
     <script>
         $(function () {
             $.get("Wishlist.opml", function (data) {
-                var theOutline = opml.parse(data);
-                var htmltext = opml.htmlify(theOutline);
+                var wishlist = opml.parse(data);
+
+                var wishlistHtml = "";
+
+                wishlist.each(function () {
+                    wishlistHtml += "<li><a href='" + $(this).attr("url") + "'>" + $(this).attr("text") + "</a></li>";
+                });
+
                 $("#wishlist").html(htmltext);
             });
         });
