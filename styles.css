@@ -1,4 +1,4 @@
-body {
-	font: Helvetica;
-    background-color: chartreuse;
+html {
+	font-family: Helvetica, Arial, sans-serif;
+    list-style-type: none;
 }
