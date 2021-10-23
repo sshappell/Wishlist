@@ -8,6 +8,10 @@ body {
     margin: 1em;
 }
 
+a {
+    padding: 0 5px;
+}
+
 a:link {
     color: #515E63;
     text-decoration: none;
@@ -30,6 +34,10 @@ a:active {
 
 h1 {
     color: #57837B;
+}
+
+li {
+    margin: 5px 0;
 }
 
 li::before {
