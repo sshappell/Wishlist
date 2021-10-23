@@ -1,4 +1,12 @@
 html {
 	font-family: Helvetica, Arial, sans-serif;
+    
+}
+
+li::before {
+    content: "🎁";
+  }
+
+ul {
     list-style-type: none;
 }
