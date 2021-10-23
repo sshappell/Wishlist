@@ -1,11 +1,15 @@
 html {
     color: #515E63;
-	font-family: Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
     background-color: #F1ECC3;
     margin: 1em;
+}
+
+a {
+    padding: .5em 0;
 }
 
 a:link {
@@ -30,10 +34,6 @@ a:active {
 
 h1 {
     color: #57837B;
-}
-
-li {
-    padding: 1em;
 }
 
 li::before {
