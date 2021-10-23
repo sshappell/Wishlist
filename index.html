@@ -19,11 +19,11 @@
     <script>
         $(function () {
             $.get("Wishlist.opml", function (data) {
-                var theOutline = opml.parse (data);
-                var htmltext = opml.htmlify (theOutline);
-                $("body").html (htmltext);
+                $(body).children().each(function () {
+                    $wishlist += "<li><a href='" + $(this).attr("url") + "'>" + $(this).attr("text") + "</a></li>";
+                });
+                $("#wishlist").html($wishlist);
             });
-        });
     </script>
 </body>
 
