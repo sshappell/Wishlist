@@ -16,6 +16,14 @@
 
 <body>
     <ul id="wishlist"></ul>
+
+    <script>
+        $(function () {
+            $.get("Wishlist.opml", function (data) {
+                var theOutline = opml.parse (data);
+            });
+        });
+    </script>
 </body>
 
 </html>
