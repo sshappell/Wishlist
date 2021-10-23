@@ -18,7 +18,9 @@
     <script>
         $(function () {
             $.get("Wishlist.opml", function (data) {
-                $(body).children().each(function () {
+                $wishlist="";
+
+                $("body").children().each(function () {
                     $wishlist += "<li><a href='" + $(this).attr("url") + "'>" + $(this).attr("text") + "</a></li>";
                 });
                 $("#wishlist").html($wishlist);
