@@ -23,15 +23,16 @@
         $(function () {
             $.get("Wishlist.opml", function (data) {
                 var $xml = $($.parseXML(data));
+
                 var $wishlist = $xml.find("outline");
 
-                console.log($wishlist);
+                var items = "";
 
                 $wishlist.each(function () {
-                    console.log($wishlist.attr("text"));
+                    items += "<li>" + $wishlist.attr("text") + + "</li>";
                 });
 
-                //$("#wishlist").html("<li>" + $outline.text() + "</li>");
+                $("#wishlist").html(items);
             });
         });
     </script>
