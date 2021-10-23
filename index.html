@@ -11,13 +11,17 @@
     <link rel="stylesheet" href="css/styles.css?v=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="opml.js"></script>
 </head>
 
 <body>
+    <ul id="wishlist"></ul>
     <script>
         $(function () {
             $.get("Wishlist.opml", function (data) {
-                document.write(data);
+                var theOutline = opml.parse (data);
+                var htmltext = opml.htmlify (theOutline);
+                $("body").html (htmltext);
             });
         });
     </script>
