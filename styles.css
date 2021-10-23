@@ -10,6 +10,7 @@ body {
 
 a:active { 
     color: #515E63;
+    text-decoration: none;
 }
 
 a:hover {
@@ -19,10 +20,12 @@ a:hover {
 
 a:link {
     color: #515E63;
+    text-decoration: none;
 }
 
 a:visited {
     color: #515E63;
+    text-decoration: none;
 }
 
 h1 {
