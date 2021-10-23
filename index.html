@@ -22,14 +22,12 @@
     <script>
         $(function () {
             $.get("Wishlist.opml", function (data) {
-                var $xml = $($.parseXML(data));
-
-                var $wishlist = $xml.find("outline");
+                var $wishlist =  $($.parseXML(data)).find("outline");
 
                 var items = "";
 
                 $wishlist.each(function () {
-                    items += "<li><a href='" + $(this).attr("text") + "'>" + $(this).attr("text") + "</a></li>";
+                    items += "<li><a href='" + $(this).attr("url") + "'>" + $(this).attr("text").replace(/\.webloc$/,"") + "</a></li>";
                 });
 
                 $("#wishlist").html(items);
