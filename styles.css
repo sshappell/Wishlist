@@ -5,7 +5,24 @@ html {
 
 body {
     background-color: #F1ECC3;
-    margin: 10%;
+    margin: 10em 20em;
+}
+
+a:active { 
+    color: #515E63;
+}
+
+a:hover {
+    color: #57837B;
+    text-decoration: underline;
+}
+
+a:link {
+    color: #515E63;
+}
+
+a:visited {
+    color: #515E63;
 }
 
 h1 {
