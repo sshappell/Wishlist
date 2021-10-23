@@ -24,7 +24,9 @@
                     $xml = $(xmlDoc),
                     $outline = $xml.find("outline");
 
-                    $("#wishlist").html("<li>" + $outline.text() + "</li>");
+                    document.write($outline);
+
+                    //$("#wishlist").html("<li>" + $outline.text() + "</li>");
             });
         });
     </script>
