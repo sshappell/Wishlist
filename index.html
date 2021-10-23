@@ -22,9 +22,9 @@
                 var xml = data,
                     xmlDoc = $.parseXML(xml),
                     $xml = $(xmlDoc),
-                    $text = $xml.find("text");
+                    $outline = $xml.find("outline");
 
-                    $("#wishlist").html($text);
+                    $("#wishlist").html("<li>" + $outline.text() + "</li>");
             });
         });
     </script>
