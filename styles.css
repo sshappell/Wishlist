@@ -8,16 +8,6 @@ body {
     margin: 1em;
 }
 
-a:active { 
-    color: #515E63;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #57837B;
-    text-decoration: underline;
-}
-
 a:link {
     color: #515E63;
     text-decoration: none;
@@ -28,8 +18,22 @@ a:visited {
     text-decoration: none;
 }
 
+a:hover {
+    color: #57837B;
+    text-decoration: underline;
+}
+
+a:active { 
+    color: #515E63;
+    text-decoration: none;
+}
+
 h1 {
     color: #57837B;
+}
+
+li {
+    padding: 1em;
 }
 
 li::before {
