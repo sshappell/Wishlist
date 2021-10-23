@@ -15,12 +15,14 @@
 </head>
 
 <body>
-    <ul id="wishlist"></ul>
+    <div id="wishlist"></div>
 
     <script>
         $(function () {
             $.get("Wishlist.opml", function (data) {
                 var theOutline = opml.parse (data);
+                var htmltext = opml.htmlify (theOutline);
+			    $("#wishlist").html (htmltext);
             });
         });
     </script>
