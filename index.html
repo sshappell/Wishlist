@@ -18,13 +18,14 @@
     <script>
         $(function () {
             $.get("Wishlist.opml", function (data) {
-                $wishlist="";
+                $wishlist = "";
 
                 $("body").children().each(function () {
                     $wishlist += "<li><a href='" + $(this).attr("url") + "'>" + $(this).attr("text") + "</a></li>";
                 });
                 $("#wishlist").html($wishlist);
             });
+        });
     </script>
 </body>
 
