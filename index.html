@@ -19,14 +19,15 @@
     <script>
         $(function () {
             $.get("Wishlist.opml", function (data) {
-                var $outline = $.parseXML(data).find("outline");
+                var $xml = $($.parseXML(data));
+                var $wishlist = $xml.find("outline");
 
-                console.log($outline);
+                console.log($wishlist);
 
                 $outline.each(function () {
-                    console.log($outline.attr("text"));
+                    console.log($wishlist.attr("text"));
                 });
-                
+
                 //$("#wishlist").html("<li>" + $outline.text() + "</li>");
             });
         });
