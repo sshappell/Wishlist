@@ -29,7 +29,7 @@
                 var items = "";
 
                 $wishlist.each(function () {
-                    items += "<li>" + $(this).attr("text") + + "</li>";
+                    items += "<li><a href='" + $(this).attr("text") + "'>" + $(this).attr("text") + "</a></li>";
                 });
 
                 $("#wishlist").html(items);
