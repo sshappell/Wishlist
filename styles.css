@@ -1,6 +1,15 @@
 html {
+    color: #515E63;
 	font-family: Helvetica, Arial, sans-serif;
-    
+}
+
+body {
+    background-color: #F1ECC3;
+    margin: 10%;
+}
+
+h1 {
+    color: #57837B;
 }
 
 li::before {
