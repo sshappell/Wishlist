@@ -9,32 +9,56 @@
     <title>Sean's Wishlist</title>
 
     <link rel="stylesheet" href="styles.css">
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
     <h1>Sean's Wishlist</h1>
 
-    <ul id="wishlist"></ul>
-
-    <script>
-        $(function () {
-            $.get("Wishlist.opml", function (data) {
-                var $wishlist =  $($.parseXML(data)).find("outline");
-
-                var items = "";
-
-                $wishlist.each(function () {
-                    items += "<li><a href='" + $(this).attr("URL") + "'>" + $(this).attr("text").replace(/\.webloc$/,"") + "</a></li>";
-                });
-
-                $("#wishlist").html(items);
-            });
-        });
-    </script>
+    <div id="content">
+        <table>
+            <thead>
+                <tr>
+                    <th id="priority">Priority</th>
+                    <th id="item">Item</th>
+                    <th id="comments">Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td><a
+                            href="https://www.tombihn.com/products/aeronaut-30-or-45-internal-frame?variant=8737225244735">Aeronaut
+                            45 Travel Backpack Internal Frame</a></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><a
+                            href="https://www.tombihn.com/collections/packing-cubes/products/packing-cube-aeronaut-45?variant=12991949242431">Aeronaut
+                            45 Travel Packing Cubes - Small Laundry (2)</a></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><a href="https://www.fastcap.com/product/blue-dog-square?cat=296">Blue Dog Square</a></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><a href="https://www.rockler.com/dust-right-clamping-hose-holders-2-pack">Rockler Dust Right
+                            Clamping Hose Holders, 2-pack</a></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><a href="https://www.rockler.com/rockler-silicone-project-mat-xl-23-x-30">Rockler Silicone
+                            Project Mat XL, 23'' x 30''</a></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>
