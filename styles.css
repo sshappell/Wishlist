@@ -1,10 +1,10 @@
 html {
-    color: #515E63;
+    color: #657b83;
     font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
-    background-color: #F1ECC3;
+    background-color: #fdf6e3;
     margin: 1em;
 }
 
@@ -15,27 +15,40 @@ a:link {
 
 a {
     padding: 0 10px;
+    font-weight: bold;
 }
 
 a:visited {
-    color: #515E63;
+    color: #2aa198;
     text-decoration: none;
+    font-weight: normal;
 }
 
 a:hover {
-    color: #57837B;
+    color: #2aa198;
     text-decoration: underline;
 }
 
 a:active { 
-    color: #515E63;
+    color: #2aa198;
     text-decoration: none;
+    font-weight: normal;
 }
 
 h1 {
-    color: #57837B;
+    color: #586e75;
 }
 
-table, th, td {
-  border: 2px solid #57837B;
-}
+table { 
+    border-collapse: collapse; 
+    width: 100%; 
+} 
+          
+th, td { 
+    text-align: left; 
+    padding: 8px; 
+} 
+          
+tr:nth-child(even) { 
+    background-color: #073642; 
+} 
