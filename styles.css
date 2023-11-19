@@ -36,15 +36,6 @@ h1 {
     color: #57837B;
 }
 
-li {
-    margin: 5px 0;
-}
-
-li::before {
-    content: "🎁";
-  }
-
-ul {
-    list-style-type: none;
-    padding: 0;
+table, th, td {
+  border: 2px solid #57837B;
 }
