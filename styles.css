@@ -50,5 +50,5 @@ th, td {
 } 
           
 tr:nth-child(even) { 
-    background-color: #073642; 
+    background-color: #eee8d5; 
 } 
