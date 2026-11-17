@@ -1,0 +1,10 @@
+filters:
+  and:
+    - file.tags.contains("wishlist")
+views:
+  - type: table
+    name: Table
+    order:
+      - file.name
+      - source
+      - tags
