@@ -1,0 +1,97 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Record site telemetry
+        continue-on-error: true
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            EVENT="update"
+          elif [[ "${{ github.event.head_commit.message }}" == "Initial publish from Obsidian" ]]; then
+            EVENT="publish"
+          else
+            EVENT="update"
+          fi
+          curl -sS -f -X POST "https://github-publish-telemetry.o-rouiller.workers.dev/v1/event" \
+            -H "Content-Type: application/json" \
+            -d "{\"event\":\"$EVENT\"}"
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Clone Quartz engine
+        run: |
+          git clone --depth 1 https://github.com/jackyzha0/quartz.git quartz-engine
+          cd quartz-engine
+          git fetch --depth 1 origin 9cf87ff1c248a8ca551093214b0fec3b31415009
+          git checkout 9cf87ff1c248a8ca551093214b0fec3b31415009
+
+      - name: Restore Quartz dependency cache
+        uses: actions/cache@v5
+        id: quartz-deps-cache
+        with:
+          path: |
+            quartz-engine/node_modules
+            quartz-engine/.quartz/plugins
+          key: quartz-deps-9cf87ff1c248a8ca551093214b0fec3b31415009-\${{ hashFiles('quartz.lock.json') }}
+          restore-keys: |
+            quartz-deps-9cf87ff1c248a8ca551093214b0fec3b31415009-
+
+      - name: Overlay user site
+        run: |
+          # Point Quartz at the site checkout's content via -d so
+          # CreatedModifiedDate discovers the wiki git history (not the engine's).
+          # Expose the same folder as ./content so plugins can resolve frontmatter
+          # images by filename, the way Obsidian does.
+          rm -rf quartz-engine/content
+          ln -s "$GITHUB_WORKSPACE/content" quartz-engine/content
+          cp quartz.config.yaml quartz.lock.json quartz-engine/
+
+      - name: Install dependencies
+        if: steps.quartz-deps-cache.outputs.cache-hit != 'true'
+        working-directory: quartz-engine
+        run: npm ci
+
+      - name: Install Quartz plugins
+        if: steps.quartz-deps-cache.outputs.cache-hit != 'true'
+        working-directory: quartz-engine
+        run: npx quartz plugin install
+
+      - name: Build site
+        working-directory: quartz-engine
+        run: npx quartz build -d "$GITHUB_WORKSPACE/content"
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: quartz-engine/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
